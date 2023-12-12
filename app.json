@@ -1,4 +1,5 @@
 {
+
   "expo": {
     "name": "my-app",
     "slug": "my-app",
@@ -11,18 +12,21 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
+    "android": {
+      "useNextNotificationsApi": true,
+      "config": {
+        "extra": {
+          "RNHermesEngine": "disabled"
+        }
+      }
+    },
     "assetBundlePatterns": [
       "**/*"
     ],
     "ios": {
       "supportsTablet": true
     },
-    "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
-      }
-    },
+
     "web": {
       "favicon": "./assets/favicon.png"
     }
