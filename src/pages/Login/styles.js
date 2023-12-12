@@ -38,6 +38,6 @@ export const style = StyleSheet.create({
     textSenha:{
         textAlign:"center",
         fontWeight:"400",
-        marginTop:2
+        marginTop:10
     }
 })

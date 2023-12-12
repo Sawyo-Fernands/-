@@ -3,7 +3,10 @@ import { style } from "./styles";
 
 export default function Cadastro() {
   return (
-    <View style={style.mainContainer}>
+    <View style={style.mainContainer}
+    behavior={Platform.OS == 'ios' ? 'padding' : ''}
+    enabled
+    >
       <View style={style.containerForm}>
       <TextInput
           placeholder="Seu Nome"
