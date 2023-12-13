@@ -10,7 +10,7 @@ export const style = StyleSheet.create({
     containerForm:{
         display:"flex",
         gap:10,
-        marginTop:60
+        // marginTop:20
     },
     textInput:{
         width:316,
