@@ -2,10 +2,20 @@ import { Image, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { style } from "./styles";
 import { useNavigation } from "@react-navigation/native";
 import { Platform } from "react-native";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../context/authContext";
 
 export default function Login() {
 
     const router = useNavigation()
+    const [email,setEmail] = useState("")
+    const [password,setPassword] = useState("")
+    const { autenticarUsuario } = useContext(AuthContext)
+
+    function handleLogin(){
+      autenticarUsuario({email,password})
+    }
+
 
   return (
     <View style={style.mainContainer}
@@ -21,15 +31,19 @@ export default function Login() {
           placeholder="E-mail"
           keyboardType="email-address"
           style={style.textInput}
+          value={email}
+          onChangeText={(text) => setEmail(text)}
         />
         <TextInput
           placeholder="Senha"
           secureTextEntry={true}
           style={style.textInput}
+          value={password}
+          onChangeText={(text) => setPassword(text)}
         />
         <View>
           <TouchableOpacity 
-          onPress={()=>router.push("Home")}
+          onPress={handleLogin}
           style={style.buttonLogin}>
             <Text style={style.textButtonLogin}>Acessar</Text>
           </TouchableOpacity>
