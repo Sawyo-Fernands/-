@@ -11,7 +11,7 @@ export function AuthProvider({children}){
 
     async function criarUsuario(params){
         if(!params.name || !params.email || !params.password) return;
-        
+
         setLoadingAuth(true)
         try{
             const result = await  api.post("/users",params)
@@ -28,7 +28,7 @@ export function AuthProvider({children}){
     }
 
     return(
-        <AuthContext.Provider value={{user,setUser,criarUsuario,loadingAuth}}>
+        <AuthContext.Provider value={{signed:!!user ,user,setUser,criarUsuario,loadingAuth}}>
             {children}
         </AuthContext.Provider>
     )

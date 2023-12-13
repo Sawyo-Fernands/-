@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
-import Routes from './src/Routes';
 import { NavigationContainer } from '@react-navigation/native';
 import { AuthProvider } from './src/context/authContext';
+import Routes from './src/Routes';
 
 export default function App(){
 

@@ -28,7 +28,9 @@ export default function Login() {
           style={style.textInput}
         />
         <View>
-          <TouchableOpacity style={style.buttonLogin}>
+          <TouchableOpacity 
+          onPress={()=>router.push("Home")}
+          style={style.buttonLogin}>
             <Text style={style.textButtonLogin}>Acessar</Text>
           </TouchableOpacity>
           <View>

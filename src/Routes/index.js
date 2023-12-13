@@ -1,25 +1,12 @@
-import { createStackNavigator } from '@react-navigation/stack';
-import Login from '../pages/Login';
-import Cadastro from '../pages/Cadastro';
+import { useContext } from "react"
+import { DrawerRoutes } from "./drawerRoutes"
+import StackRoutes from "./stackRoutes"
+import { AuthContext } from "../context/authContext"
 
-const Stack = createStackNavigator();
+export default function  Routes(){
+    const { signed } = useContext(AuthContext)
 
-export default function Routes(){
-         return(
-            <Stack.Navigator>
-            <Stack.Screen name="Login"
-            options={{
-                headerShown:false
-            }}
-            component={Login} />
-            <Stack.Screen 
-            options={{
-                headerTintColor:"white",
-                headerStyle: {
-                    backgroundColor: 'rgba(59, 61, 191, 1)', 
-                  },
-            }}
-            name="Cadastro" component={Cadastro} />
-        </Stack.Navigator>
-         )
+
+return signed ? <DrawerRoutes /> : <StackRoutes />
+
 }
