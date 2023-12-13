@@ -1,4 +1,4 @@
-import { Image, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { Image, Text, TextInput, TouchableOpacity, View, ActivityIndicator } from "react-native";
 import { style } from "./styles";
 import { useNavigation } from "@react-navigation/native";
 import { Platform } from "react-native";
@@ -10,7 +10,7 @@ export default function Login() {
     const router = useNavigation()
     const [email,setEmail] = useState("")
     const [password,setPassword] = useState("")
-    const { autenticarUsuario } = useContext(AuthContext)
+    const { autenticarUsuario, loadingAuth } = useContext(AuthContext)
 
     function handleLogin(){
       autenticarUsuario({email,password})
@@ -45,7 +45,10 @@ export default function Login() {
           <TouchableOpacity 
           onPress={handleLogin}
           style={style.buttonLogin}>
-            <Text style={style.textButtonLogin}>Acessar</Text>
+            {
+              loadingAuth ? (<ActivityIndicator size={20} color={'white'} />)
+              : (<Text style={style.textButtonLogin}>Acessar</Text>)
+            }
           </TouchableOpacity>
           <View>
             <Text style={style.textSenha} onPress={()=>router.push("Cadastro")}>Crie uma conta! </Text>

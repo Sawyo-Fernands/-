@@ -29,7 +29,6 @@ export function AuthProvider({ children }) {
     setLoadingAuth(true);
     try {
       const result = await api.post("/login", params);
-      setLoadingAuth(false);
       const { id, name, token } = result.data;
       api.defaults.headers["Authotization"] = `Bearer ${token}`;
       setUser({ id, name, email: params.email });
