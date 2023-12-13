@@ -1,4 +1,4 @@
-import { Image, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { Image, Text, TextInput, TouchableOpacity, View, ActivityIndicator } from "react-native";
 import { style } from "./styles";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../context/authContext";
@@ -8,7 +8,7 @@ export default function Cadastro() {
   const [usuario,setUsuario] = useState("")
   const [senha,setSenha] = useState("")
   const [email,setEmail] = useState("")
-  const { criarUsuario } = useContext(AuthContext)
+  const { criarUsuario,loadingAuth } = useContext(AuthContext)
 
   async function SignUp(){
     await criarUsuario({email:email,password:senha,name:usuario,})
@@ -42,7 +42,14 @@ export default function Cadastro() {
         />
         <View>
           <TouchableOpacity style={style.buttonLogin} onPress={SignUp}>
-            <Text style={style.textButtonLogin}>Cadastrar</Text>
+            {
+              loadingAuth ? (
+                <ActivityIndicator color={'white'} size={20} />
+              ) : (
+                <Text style={style.textButtonLogin}>Cadastrar</Text>
+
+              )
+            }
           </TouchableOpacity>
         </View>
       </View>
