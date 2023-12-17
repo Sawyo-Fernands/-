@@ -1,18 +1,12 @@
-import { useContext } from "react";
-import { Button, Text, View } from "react-native";
-import { AuthContext } from "../../context/authContext";
+import { Text, View } from "react-native";
+import {style} from './styles';
+import { Header } from "../../components/Header";
+import { StatusBar } from "expo-status-bar";
 
 export default function Home(){
-
-    const { signOut } = useContext(AuthContext)
-
     return(
-        <View>
-            <Text>
-                Home
-            </Text>
-            <Button onPress={signOut} title="Sair" />
-              
+        <View style={style.mainContainer}>
+            <Header title={'Minhas Movimentações'} />
         </View>
     )
 }

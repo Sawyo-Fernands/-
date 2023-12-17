@@ -35,9 +35,12 @@ export function AuthProvider({ children }) {
     setLoadingAuth(true);
     try {
       const { id, name } = authUser(params)
-
-      setUser({ id, name, email: params.email });
+      console.log({id})
+      if(id){
+        setUser({ id, name, email: params.email });
+      }
       setLoadingAuth(false);
+     
 
     } catch (e) {
       setLoadingAuth(false);
