@@ -6,4 +6,7 @@ export const style = StyleSheet.create({
         backgroundColor:'#f0f4ff',
         color:"black",
     },
+    listContainer:{
+        maxHeight:190,
+    }
 })

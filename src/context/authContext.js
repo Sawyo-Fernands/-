@@ -34,8 +34,8 @@ export function AuthProvider({ children }) {
     if (!params.email || !params.password) return;
     setLoadingAuth(true);
     try {
-      const { id, name } = authUser(params)
-      console.log({id})
+      const { id, name } = await authUser(params)
+      console.log({id, name})
       if(id){
         setUser({ id, name, email: params.email });
       }
@@ -55,6 +55,7 @@ export function AuthProvider({ children }) {
     async function getToken() {
       setLoading(true)
       const token = await AsyncStorage.getItem("@token");
+     
       if (token) {
         const response = await getDataUser(token);
         if (!response.data) {
